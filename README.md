@@ -1,4 +1,4 @@
-    npm install mouseAround
+    npm install mouse-around
 
 A single event for mouse on, mouse around & mouse out 
 
