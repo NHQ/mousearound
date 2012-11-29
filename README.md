@@ -2,7 +2,7 @@
 
 A single event for mouse on, mouse around & mouse out 
 
-    var mouseAround = require('mouseAround');
+    var mouseAround = require('mouse-around');
 
     // the node u want to trigger on
 	var node = document.getElementById('someElement');
