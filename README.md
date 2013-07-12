@@ -11,9 +11,9 @@ A single event for mouse on, mouse around & mouse out
 	
 	mouseAround(node, callback);
 	
-	// evt = the mouse event (for mouse position, etc)
+	// evt = the mouse event
 	// node = the original node you were listening to
-	// position = the position of that node [x, y]
+	// position = the absolute position of the element currently being hovered (which may be a child element)
 	// start & stop = boolean
 	
 	function callback(evt, node, position, start, end){
