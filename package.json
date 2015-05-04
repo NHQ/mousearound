@@ -1,6 +1,6 @@
 {
   "name": "mouse-around",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "mouse hover event for elements",
   "main": "index.js",
   "scripts": {
