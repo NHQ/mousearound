@@ -1,15 +1,36 @@
-    npm install mouse-around
+A single event for mouse on, mouse around & mouse out.
+Can be used on whole elements, or for distinct points within any element. 
+The latter feature was added specifically for canvas nodes.
 
-A single event for mouse on, mouse around & mouse out 
+##
+```js
+var hover = require('mouse-around')
+```
 
-    var mouseAround = require('mouse-around');
+### hover(el, [points], callback)
 
-    // the node u want to trigger on
+callback will be fired when mouse hovers the element.  if an array of point-circles is included, the callback will only fire when hovering that areat that offset within the element.  See below for example points array.
+
+## install
+
+```
+npm install mouse-around
+```
+
+## example
+
+```js
+  var mouseAround = require('mouse-around');
+
+  // the node u want to trigger on
 	var node = document.getElementById('someElement');
+  
+  // optionally, an array of point-circle objects
+  var points = [(x: 100, y: 100, radius: 25}/*,{...}*/]
 	
-	var hoverBot = document.getElementById('hoverbot');
+  var hoverBot = document.getElementById('hoverbot');
 	
-	mouseAround(node, callback);
+	mouseAround(node, callback, points); // otionally include an array of point-circle objects 
 	
 	// evt = the mouse event
 	// node = the original node you were listening to
@@ -22,4 +43,5 @@ A single event for mouse on, mouse around & mouse out
 		if(end) hoverBot.style.left = '-1000px'; 
 	};
 	
+```
 LICENSE: MIT

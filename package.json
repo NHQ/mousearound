@@ -13,5 +13,8 @@
     "browserify"
   ],
   "author": "johnnyscriptus",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "closeness": "^1.0.0"
+  }
 }
