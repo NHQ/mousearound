@@ -9,8 +9,12 @@ module.exports = function(node, points, fn){
 
   if(points){
     points = points.map(function(e){
-      e.closeX = close(e.x, e.radius || 10)
-      e.closeY = close(e.y, e.radius || 10)
+      var self = e
+      e.update = function(){
+        self.closeX = close(self.x, self.radius * 10 || 10)
+        self.closeY = close(self.y, self.radius * 10 || 10)
+      }
+      e.update()
       return e
     })
   }
@@ -28,8 +32,15 @@ module.exports = function(node, points, fn){
     if(points){
       points.forEach(function(pt) {
         var x, y
+        if(pt.hover){
+          if(!(pt.closeX(x = evt.offsetX) && pt.closeY(y = evt.offsetY))){
+            pt.hover = false
+            fn(evt, pt, [x, y], false, true)
+          }
+        }
         if(pt.closeX(x = evt.offsetX) && pt.closeY(y = evt.offsetY)){
-          fn(evt, pt, [x, y], false, true)
+          pt.hover = true
+          fn(evt, pt, [x, y], false, false)
         }
       })    
       return
@@ -49,6 +60,7 @@ module.exports = function(node, points, fn){
       points.forEach(function(pt) {
         var x, y
         if(pt.closeX(x = evt.offsetX) && pt.closeY(y = evt.offsetY)){
+          pt.hover = false
           fn(evt, pt, [x, y], false, true)
         }
       })    
@@ -70,6 +82,7 @@ module.exports = function(node, points, fn){
       points.forEach(function(pt) {
         var x, y
         if(pt.closeX(x = evt.offsetX) && pt.closeY(y = evt.offsetY)){
+          pt.hover = true
           fn(evt, pt, [x, y], true, false)
         }
       })    
@@ -82,6 +95,8 @@ module.exports = function(node, points, fn){
     fn(evt, node, position, true, false)
 
   };
+
+  return points
 
 }
 
